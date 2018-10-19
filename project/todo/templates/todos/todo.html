@@ -1,0 +1,19 @@
+<h1>Todo: {{ todo.description }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<ul>
+    <li>Description: {{ todo.description }}</li>
+    <li>Created at: {{ todo.created_at|date:'r' }}</li>
+    <li>Updated at: {{ todo.updated_at|date:'r' }}</li>
+    <li>Finished at: {{ todo.finished_at|date:'r' }}</li>
+</ul>
+
+
+<form action="{% url 'todos:update' todo.id %}" method="post">
+{% csrf_token %}
+    <label for="description">
+        <input type="text" name="description" id="description" value="{{ todo.description }}">
+    </label>
+    <input type="submit" value="Update">
+</form>

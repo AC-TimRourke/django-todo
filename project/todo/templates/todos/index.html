@@ -1,0 +1,21 @@
+{% if all_todos %}
+    <ul>
+    {% for todo in all_todos %}
+        <li><a href="{% url 'todos:todo' todo.id %}">{{ todo.description }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No todos are available.</p>
+{% endif %}
+
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'todos:create' %}" method="post">
+{% csrf_token %}
+    <label for="description">
+        <input type="text" name="description" id="description" placeholder="Name of new Todo">
+    </label>
+    <input type="submit" value="Create New Todo">
+</form>
