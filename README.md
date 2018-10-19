@@ -42,3 +42,31 @@ _Note that you can use pyenv at any time to also revert to the default version o
 ```bash
 pip install pipenv
 ```
+
+## Running the application using docker-compose
+
+To spin up the application server, use the `docker-compose.yml` services that are configured for you:
+
+```bash
+docker-compose up --build
+```
+
+This should create the container, install the application's depencencies, and start the application server.
+
+Now you can browse to [http://localhost:8000/todos](http://localhost:8000/todos) to see the app's index page.
+
+**NOTE:** If you are using docker-machine, you'll probably need to use [http://192.168.99.100:8000/todos](http://192.168.99.100:8000/todos) instead.
+
+### Run the application's migrations
+
+To run the migrations for this application, create a bash session using `docker-compose`:
+
+```bash
+docker-compose exec python bash
+```
+
+Once inside the bash session, use the app's main `project`'s entrypoint `project/manage.py` to run the Django `migrate` command:
+
+```bash
+pipenv run python project/manage.py migrate
+```
