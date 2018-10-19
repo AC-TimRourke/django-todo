@@ -70,3 +70,16 @@ Once inside the bash session, use the app's main `project`'s entrypoint `project
 ```bash
 pipenv run python project/manage.py migrate
 ```
+
+### Create the application's superuser
+
+Django ships with a very nice administration panel out of the box. To start using it, we must first create the app's main admin "superuser". Be sure to do this from within a bash session to the `python` service. It is interactive, and will prompt you for input:
+
+
+```
+pipenv run python project/manage.py createsuperuser
+```
+
+Once you have created the first Django "superuser", you can browse to [http://localhost:8000/admin](http://localhost:8000/admin) to log in (or [http://192.168.99.100:8000/admin](http://192.168.99.100:8000/admin) if you are running docker-machine). Log in with the user and password you just created the superuser with to see the administration options.
+
+You should be able to create Users, assign them to Groups, and manage a given User's Todos.
