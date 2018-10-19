@@ -26,6 +26,7 @@ SECRET_KEY = '$8d#m@n4*l#4ugnn(d1_jmsb_465s8e16kt(-$$$0nk7%ad92$'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '192.168.99.100', # Default host of docker-machine. Folks using Docker for Mac may not need this.
 ]
 
 
